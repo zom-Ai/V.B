@@ -2,12 +2,12 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>تحميل التطبيق - تطبيقنا الرسمي</title>
-    <!-- Font Awesome 6 (مجاني) للأيقونات -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Lite V.B - تحميل النسخة الآمنة</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: خط حديث وجميل -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -17,505 +17,201 @@
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(145deg, #f6f9fc 0%, #eef2f7 100%);
+            background: #f2f4f8;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
-            position: relative;
+            padding: 1.2rem;
         }
 
-        /* خلفية مزخرفة بنقاط دائرية */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
+        .card {
+            max-width: 480px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            border: 1px solid #eef2f6;
+        }
+
+        .content {
+            padding: 2rem 1.8rem;
+            text-align: center;
+        }
+
+        .app-icon {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 1rem;
+            background: #f8fafc;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .app-icon img {
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(circle at 10% 20%, rgba(0, 150, 255, 0.03) 2px, transparent 2px);
-            background-size: 30px 30px;
-            pointer-events: none;
+            object-fit: cover;
         }
 
-        /* البطاقة الرئيسية */
-        .download-card {
-            max-width: 880px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(0px);
-            border-radius: 64px;
-            border-radius: 3rem;
-            box-shadow: 0 35px 68px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            z-index: 2;
-            border: 1px solid rgba(255,255,255,0.5);
-        }
-
-        .download-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 45px 80px rgba(0, 0, 0, 0.15);
-        }
-
-        /* رأس الصفحة بشريط تدرج لوني */
-        .hero-gradient {
-            background: linear-gradient(135deg, #0b2b5c, #1c4e8c, #2b6cb0);
-            padding: 2.8rem 2rem 3rem;
-            text-align: center;
-            color: white;
-            border-bottom-left-radius: 2rem;
-            border-bottom-right-radius: 2rem;
-            position: relative;
-        }
-
-        .hero-gradient::after {
-            content: "";
-            position: absolute;
-            bottom: -20px;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background: inherit;
-            filter: blur(12px);
-            opacity: 0.3;
-            z-index: -1;
-            border-radius: 50%;
-        }
-
-        .icon-app {
-            background: rgba(255,255,255,0.2);
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 32px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 15px 25px -8px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .icon-app i {
-            font-size: 3.6rem;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-        }
-
-        .hero-gradient h1 {
-            font-size: 2.4rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .hero-gradient .sub {
-            font-size: 1.1rem;
-            opacity: 0.92;
-            font-weight: 500;
-            margin-top: 0.5rem;
-        }
-
-        /* محتوى البطاقة الداخلي */
-        .content {
-            padding: 2.2rem 2rem 2.5rem;
-        }
-
-        /* ميزات التطبيق */
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            margin-bottom: 2rem;
-            justify-content: center;
-        }
-
-        .feature-item {
-            flex: 1;
-            min-width: 140px;
-            background: #f8fafd;
-            border-radius: 2rem;
-            padding: 1rem 0.8rem;
-            text-align: center;
-            transition: all 0.2s;
-            border: 1px solid #e9edf2;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
-
-        .feature-item i {
-            font-size: 2rem;
-            color: #1c6fb0;
-            margin-bottom: 0.5rem;
-            display: inline-block;
-        }
-
-        .feature-item span {
-            display: block;
-            font-weight: 600;
-            color: #1e2a3e;
-            font-size: 1rem;
-        }
-
-        .feature-item small {
-            font-size: 0.75rem;
-            color: #5a6e85;
-            margin-top: 4px;
-            display: block;
-        }
-
-        /* معلومات الملف ونظام التشغيل */
-        .file-info {
-            background: #eef3fc;
-            border-radius: 2rem;
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            direction: ltr;
-            font-family: monospace;
-            border: 1px solid #dce5ef;
-        }
-
-        .file-details {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .file-badge {
-            background: #1c6fb0;
-            color: white;
-            padding: 0.3rem 0.9rem;
-            border-radius: 60px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        .file-name {
-            font-size: 1rem;
-            font-weight: 700;
-            background: white;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            box-shadow: inset 0 1px 2px #0001, 0 1px 1px white;
-            letter-spacing: 0.5px;
-            color: #0b2b4f;
-        }
-
-        .file-size {
-            color: #34597a;
-            font-size: 0.85rem;
-            background: white;
-            padding: 0.2rem 0.9rem;
-            border-radius: 40px;
-        }
-
-        /* زر التحميل الرئيسي */
-        .btn-download {
-            display: block;
-            width: 100%;
-            background: linear-gradient(105deg, #0f3b6a, #1d5791);
-            border: none;
-            padding: 1.2rem 1rem;
-            font-size: 1.6rem;
-            font-weight: 800;
-            font-family: 'Cairo', sans-serif;
-            color: white;
-            border-radius: 3rem;
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.25s ease;
-            box-shadow: 0 12px 20px -10px rgba(0, 70, 120, 0.4);
-            margin-bottom: 1.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .btn-download i {
+        .app-name {
             font-size: 1.9rem;
-            transition: transform 0.2s;
+            font-weight: 800;
+            color: #0a2540;
+            margin-bottom: 0.5rem;
         }
 
-        .btn-download:hover {
-            background: linear-gradient(105deg, #0c3158, #144b7a);
-            transform: scale(1.01);
-            box-shadow: 0 18px 28px -12px #0f3b6a;
+        .app-name span {
+            color: #2c7da0;
         }
 
-        .btn-download:hover i {
-            transform: translateY(2px);
+        .badge {
+            background: #e6f4ea;
+            color: #2e7d5e;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 1rem;
         }
 
-        .btn-download:active {
-            transform: scale(0.98);
+        .description {
+            font-size: 0.95rem;
+            color: #2c3e4e;
+            background: #f9fbfd;
+            padding: 1rem;
+            border-radius: 20px;
+            margin: 1rem 0 1.2rem;
         }
 
-        /* معلومات إضافية */
-        .extra-info {
+        .info-list {
+            background: #ffffff;
+            border-radius: 24px;
+            margin: 1rem 0 1.5rem;
+            border: 1px solid #ecf1f7;
+            overflow: hidden;
+        }
+
+        .info-row {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #f0f4fa;
+            font-size: 0.9rem;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #4b5e77;
+        }
+
+        .info-value {
+            background: #f8fafc;
+            padding: 0.2rem 0.7rem;
+            border-radius: 40px;
             font-size: 0.85rem;
-            color: #2c496c;
-            background: #ffffffd9;
-            padding: 0.8rem 1.2rem;
-            border-radius: 2rem;
-            border: 1px dashed #bdd4e8;
         }
 
-        .secure-badge i, .version i {
-            margin-left: 6px;
-        }
-
-        .version {
-            font-weight: 500;
-        }
-
-        /* تذييل بسيط */
-        .footer-note {
-            text-align: center;
-            margin-top: 1.8rem;
-            border-top: 1px solid #e2edf7;
-            padding-top: 1.3rem;
-            font-size: 0.75rem;
-            color: #5c7b9c;
-        }
-
-        /* responsive */
-        @media (max-width: 640px) {
-            .download-card {
-                border-radius: 2rem;
-            }
-            .hero-gradient {
-                padding: 1.8rem 1rem 2rem;
-            }
-            .hero-gradient h1 {
-                font-size: 1.8rem;
-            }
-            .content {
-                padding: 1.5rem;
-            }
-            .btn-download {
-                font-size: 1.25rem;
-                padding: 1rem;
-            }
-            .feature-item {
-                min-width: 110px;
-            }
-            .file-info {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        /* تحسين النقر على الروابط */
-        a {
+        .btn-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            background: #1877f2;
+            padding: 0.9rem 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            border-radius: 60px;
             text-decoration: none;
+            margin: 0.8rem 0;
         }
 
-        /* تأثير خلفية خفيف */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-5px); }
+        .btn-facebook {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            background: #0a66ff;
+            padding: 0.9rem 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            border-radius: 60px;
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+        }
+
+        .footnote {
+            font-size: 0.7rem;
+            color: #7a8aa3;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #edf2f7;
         }
     </style>
 </head>
+
 <body>
 
-<div class="download-card">
-    <div class="hero-gradient">
-        <div class="icon-app">
-            <i class="fas fa-mobile-alt"></i>
-        </div>
-        <h1>تطبيق <span style="font-weight:900">SmartApp</span></h1>
-        <div class="sub">أحدث تجربة رقمية متكاملة – حمل التطبيق الآن واستمتع بالمميزات الحصرية</div>
-    </div>
-    
+<div class="card">
     <div class="content">
-        <!-- قائمة المميزات السريعة -->
-        <div class="features">
-            <div class="feature-item">
-                <i class="fas fa-bolt"></i>
-                <span>سرعة فائقة</span>
-                <small>أداء محسّن</small>
+
+        <!-- صورة التطبيق -->
+        <div class="app-icon">
+            <img src="h.png" alt="Lite V.B Logo"
+            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%231877f2%22/%3E%3Ctext x=%2250%22 y=%2267%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22white%22%3ELV%3C/text%3E%3C/svg%3E';">
+        </div>
+
+        <div class="app-name">Lite <span>V.B</span></div>
+        <div class="badge"><i class="fas fa-shield-alt"></i> نسخة آمنة ومعتمدة</div>
+
+        <!-- النص كما هو بدون تعديل -->
+        <div class="description">
+            <i class="fas fa-wifi"></i> نسخة أمنة معدلة من فيسبوك لايت، تسمح للمستخدم باستخدام الوضع الأساسي دون إنترنت بكل سلاسة وأمان.
+        </div>
+
+        <div class="info-list">
+            <div class="info-row">
+                <span>الإصدار</span><span>1.0.0.2</span>
             </div>
-            <div class="feature-item">
-                <i class="fas fa-shield-alt"></i>
-                <span>آمن وخاص</span>
-                <small>حماية بياناتك</small>
+            <div class="info-row">
+                <span>حجم الملف</span><span>5 MB</span>
             </div>
-            <div class="feature-item">
-                <i class="fas fa-chart-line"></i>
-                <span>تحليلات ذكية</span>
-                <small>لوحة تحكم متطورة</small>
+            <div class="info-row">
+                <span>نظام التشغيل</span><span>Android 5.0+</span>
             </div>
-            <div class="feature-item">
-                <i class="fas fa-headset"></i>
-                <span>دعم 24/7</span>
-                <small>خدمة عملاء دائمة</small>
+            <div class="info-row">
+                <span>الميزة</span><span>وضع أساسي دون إنترنت</span>
             </div>
         </div>
-        
-        <!-- معلومات ملف APK (مرتبط بالملف الموجود) -->
-        <div class="file-info">
-            <div class="file-details">
-                <span class="file-badge"><i class="fab fa-android"></i> Android</span>
-                <span class="file-name"><i class="far fa-file"></i> app.apk</span>
-                <span class="file-size"><i class="fas fa-database"></i> 32.5 MB</span>
-            </div>
-            <div style="font-size:0.8rem; color:#3a6e9f;">
-                <i class="fas fa-check-circle"></i> متوافق مع Android 5.0+
-            </div>
-        </div>
-        
-        <!-- زر التحميل الذي يقوم بتنزيل الملف app.apk (نفس مسار الصفحة) -->
+
+        <!-- زر التحميل -->
         <a href="app.apk" download class="btn-download" id="downloadBtn">
-            <i class="fas fa-download"></i> تحميل التطبيق مباشرة
-            <i class="fas fa-arrow-down"></i>
+            <i class="fas fa-download"></i> تحميل التطبيق
         </a>
-        
-        <!-- ملاحظات إضافية وتفاصيل الإصدار -->
-        <div class="extra-info">
-            <div class="secure-badge">
-                <i class="fas fa-lock"></i> تنزيل آمن • خالٍ من الفيروسات
-            </div>
-            <div class="version">
-                <i class="fas fa-code-branch"></i> الإصدار 3.2.1 | محدث: أبريل 2026
-            </div>
-            <div>
-                <i class="fas fa-language"></i> يدعم العربية والإنجليزية
-            </div>
+
+        <!-- زر المطور تحت زر التحميل -->
+        <a href="https://www.facebook.com/VH5FS" target="_blank" class="btn-facebook">
+            <i class="fab fa-facebook"></i> صفحة المطور على فيسبوك
+        </a>
+
+        <div class="footnote">
+            ملف APK آمن 100% • فعّل "مصادر غير معروفة" عند التثبيت
         </div>
-        
-        <div class="footer-note">
-            <i class="fas fa-sync-alt"></i> يتم حفظ الملف في جهازك بصيغة APK . يُرجى تمكين التثبيت من مصادر غير معروفة (الإعدادات ← الأمان) إذا طلب الجهاز ذلك.
-        </div>
+
     </div>
 </div>
-
-<!-- نافذة منبثقة بسيطة تظهر رسالة عند بدء التحميل (بدون إزعاج) -->
-<script>
-    (function(){
-        // التحقق من وجود عنصر زر التحميل وإضافة حدث تنبيه اختياري عند الضغط
-        const downloadLink = document.getElementById('downloadBtn');
-        if(downloadLink) {
-            downloadLink.addEventListener('click', function(e) {
-                // يمكن إظهار إشعار صغير غير مزعج للتوضيح (أو تنبيه اختياري)
-                // لكن نفضل إضافة رسالة أنيقة عبر عنصر عائم سريع بدل alert
-                // إنشاء إشعار ظهور رسالة "جارٍ التحميل" يختفي بعد ثانية
-                const toast = document.createElement('div');
-                toast.innerText = '⏳ جارٍ تحميل ملف APK ...';
-                toast.style.position = 'fixed';
-                toast.style.bottom = '25px';
-                toast.style.left = '50%';
-                toast.style.transform = 'translateX(-50%)';
-                toast.style.backgroundColor = '#1f2e3f';
-                toast.style.color = 'white';
-                toast.style.padding = '12px 28px';
-                toast.style.borderRadius = '60px';
-                toast.style.fontFamily = "'Cairo', sans-serif";
-                toast.style.fontWeight = '500';
-                toast.style.fontSize = '0.9rem';
-                toast.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
-                toast.style.zIndex = '9999';
-                toast.style.backdropFilter = 'blur(6px)';
-                toast.style.border = '1px solid rgba(255,255,255,0.2)';
-                toast.style.direction = 'rtl';
-                document.body.appendChild(toast);
-                
-                setTimeout(() => {
-                    toast.style.opacity = '0';
-                    toast.style.transition = 'opacity 0.4s';
-                    setTimeout(() => {
-                        if(toast && toast.remove) toast.remove();
-                    }, 500);
-                }, 1800);
-                
-                // لا نمنع التحميل الأصلي، فقط إشعار. 
-                // إذا لم يبدأ التحميل بسبب عدم وجود الملف، قد نظهر إشعار مختلف.
-                // ملاحظة: سنقوم أيضًا بمحاكاة التأكد (اختياري)
-                // ولكن نظرًا لوجود مسار app.apk وسمة download، فالمتصفح سيحاول التنزيل.
-                // لتفادي الأخطاء عند عدم وجود الملف الحقيقي، يمكن إضافة فحص لكن هذا سيكون بمثابة صفحة ثابتة للمستخدم الذي يضع الملف بجانب الصفحة.
-                // سأضيف فحص صغير في حال فشل التحميل (حدث الخطأ غير مدعوم مباشرة من <a>) لكن يمكن التنبيه إذا تعذر.
-            });
-        }
-        
-        // اختبار بسيط: التأكد من وجود ملف app.apk عن طريق محاولة fetch (فحص خلفي) لتقديم إشعار للمطور
-        // ولكن هذا ليس ضروريًا للتجربة; سيتم التنزيل طالما الملف موجود.
-        // فقط لتقديم ملاحظة ذكية إذا كان الملف غير موجود في السيرفر (console طبعاً)
-        if(window.fetch) {
-            fetch('app.apk', { method: 'HEAD' })
-                .then(response => {
-                    if(!response.ok) {
-                        console.warn('⚠️ تنبيه: ملف app.apk غير موجود في نفس مسار الصفحة. يرجى وضع الملف بجانب ملف HTML لتتم عملية التحميل بنجاح.');
-                        // إضافة رسالة غير مزعجة للمستخدم في حالة عدم وجود الملف أثناء التصفح العادي
-                        const existingNote = document.querySelector('.footer-note');
-                        if(existingNote && !document.getElementById('missing-warning')) {
-                            const warnSpan = document.createElement('div');
-                            warnSpan.id = 'missing-warning';
-                            warnSpan.style.marginTop = '10px';
-                            warnSpan.style.background = '#fff2e0';
-                            warnSpan.style.padding = '6px 12px';
-                            warnSpan.style.borderRadius = '2rem';
-                            warnSpan.style.fontSize = '0.7rem';
-                            warnSpan.style.color = '#c0631a';
-                            warnSpan.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ملاحظة: ملف التطبيق (app.apk) لم يتم العثور عليه في المسار الحالي، تأكد من رفع الملف بجانب صفحة HTML.';
-                            existingNote.parentNode.insertBefore(warnSpan, existingNote.nextSibling);
-                        }
-                    } else {
-                        console.log('✅ ملف app.apk موجود وجاهز للتحميل');
-                    }
-                })
-                .catch(err => {
-                    console.warn('حدث خطأ في التحقق من وجود الملف: ', err);
-                });
-        }
-    })();
-</script>
-
-<!-- إضافة رسالة إضافية لطيفة لتوجيه المستخدم إلى تمكين التثبيت، يتم عرضها على الأجهزة المحمولة فقط -->
-<script>
-    (function mobileNotice() {
-        // الكشف عن نظام أندرويد لعرض تلميح إضافي صغير
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        if(/android/i.test(userAgent)) {
-            const extraTip = document.createElement('div');
-            extraTip.className = 'extra-tip';
-            extraTip.style.marginTop = '12px';
-            extraTip.style.fontSize = '0.7rem';
-            extraTip.style.textAlign = 'center';
-            extraTip.style.color = '#386a8c';
-            extraTip.style.backgroundColor = '#ecf5fc';
-            extraTip.style.padding = '6px 12px';
-            extraTip.style.borderRadius = '30px';
-            extraTip.style.display = 'inline-block';
-            extraTip.style.width = 'auto';
-            extraTip.innerHTML = '<i class="fas fa-cog"></i> بعد التحميل: اذهب إلى الإعدادات > الأمان > فعّل "مصادر غير معروفة" (لأندرويد 8+) أو اسمح للتطبيق بالتثبيت';
-            const footerNote = document.querySelector('.footer-note');
-            if(footerNote) {
-                const container = document.createElement('div');
-                container.style.display = 'flex';
-                container.style.justifyContent = 'center';
-                container.appendChild(extraTip);
-                footerNote.appendChild(container);
-            }
-        }
-    })();
-</script>
 
 </body>
 </html>
