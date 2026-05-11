@@ -2,146 +2,145 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>متجر التطبيقات - متجر عربي للتطبيقات</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر التطبيقات - Google Play Style</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Tahoma', 'Cairo', sans-serif;
+            font-family: 'Segoe UI', Roboto, 'Cairo', sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
-            min-height: 100vh;
-            padding: 30px 20px;
+            background: #f1f3f7;
         }
 
-        /* الحاوية الرئيسية */
-        .container {
-            max-width: 1300px;
+        /* شريط علوي مثل جوجل بلاي */
+        .top-bar {
+            background: white;
+            padding: 12px 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar-content {
+            max-width: 1400px;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        /* الهيدر */
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .header h1 {
-            font-size: 2.2rem;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0f9d58, #34a853);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            margin-bottom: 10px;
         }
 
-        .header p {
-            color: #5a6e8a;
-            font-size: 1rem;
-        }
-
-        /* شريط البحث */
-        .search-section {
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .search-box {
-            display: inline-flex;
-            align-items: center;
-            background: white;
-            border-radius: 50px;
-            padding: 5px 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .search-box input {
+        .search-wrapper {
             flex: 1;
-            padding: 12px 15px;
-            border: none;
-            outline: none;
+            max-width: 500px;
+            min-width: 200px;
+        }
+
+        .search-wrapper input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 28px;
             font-size: 1rem;
-            background: transparent;
+            background: #f5f5f5;
+            transition: 0.2s;
         }
 
-        .search-box button {
-            background: #2a5298;
-            border: none;
-            color: white;
-            padding: 8px 18px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: 0.3s;
+        .search-wrapper input:focus {
+            outline: none;
+            background: white;
+            border-color: #0f9d58;
+            box-shadow: 0 1px 6px rgba(15,157,88,0.2);
         }
 
-        .search-box button:hover {
-            background: #1e3c72;
-            transform: scale(1.02);
+        /* شبكة التطبيقات - 3 في السطر بالضبط مثل جوجل بلاي */
+        .container {
+            max-width: 1300px;
+            margin: 30px auto;
+            padding: 0 20px;
         }
 
-        /* شبكة التطبيقات */
         .apps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
-            margin-bottom: 40px;
         }
 
-        /* بطاقة التطبيق */
+        /* بطاقة احترافية */
         .app-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            text-align: center;
-            padding-bottom: 15px;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
         }
 
         .app-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
 
         .app-card-img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            background: #f0f2f5;
+            background: #fafafa;
             display: flex;
-            align-items: center;
             justify-content: center;
-            overflow: hidden;
+            align-items: center;
+            padding: 25px 20px 15px;
         }
 
         .app-card-img img {
-            width: 100%;
-            height: 100%;
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
             object-fit: cover;
-            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .app-info {
+            padding: 0 16px 16px;
+            text-align: right;
         }
 
         .app-card h3 {
-            font-size: 1rem;
-            margin: 12px 10px 5px;
-            color: #1e2a3e;
+            font-size: 1.1rem;
             font-weight: 600;
+            color: #202124;
+            margin-bottom: 4px;
         }
 
-        .app-card p {
+        .app-card .developer {
             font-size: 0.8rem;
-            color: #6c757d;
+            color: #5f6368;
             margin-bottom: 8px;
         }
 
-        /* مودال التفاصيل */
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: #f4b400;
+        }
+
+        /* مودال تفاصيل متطور */
         .modal {
             display: none;
             position: fixed;
@@ -149,445 +148,375 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            padding: 20px;
         }
 
         .modal.active {
             display: flex;
-            animation: fadeIn 0.3s;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
+        .modal-container {
             background: white;
-            max-width: 500px;
-            width: 100%;
-            border-radius: 35px;
+            border-radius: 28px;
+            max-width: 480px;
+            width: 90%;
             overflow: hidden;
-            box-shadow: 0 30px 40px rgba(0,0,0,0.3);
-            animation: slideUp 0.3s;
+            animation: modalPop 0.2s ease;
         }
 
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        @keyframes modalPop {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         .modal-header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            padding: 20px;
-            text-align: center;
+            background: white;
+            padding: 20px 24px 0 24px;
+            display: flex;
+            gap: 18px;
+            align-items: center;
         }
 
-        .modal-header h2 {
-            margin-bottom: 5px;
+        .modal-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+
+        .modal-header-text h2 {
+            font-size: 1.5rem;
+            color: #202124;
+        }
+
+        .modal-header-text p {
+            color: #5f6368;
+            font-size: 0.85rem;
         }
 
         .modal-body {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            padding: 20px 24px;
+            border-top: 1px solid #e8eaed;
+            border-bottom: 1px solid #e8eaed;
+            background: #fafafa;
         }
 
-        .modal-img {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .modal-img img {
-            width: 110px;
-            height: 110px;
-            border-radius: 25px;
-            object-fit: cover;
-            border: 3px solid #e9ecef;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        }
-
-        .detail-row {
+        .detail-item {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #eef2f6;
+            padding: 12px 0;
+            border-bottom: 1px solid #e8eaed;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
         }
 
         .detail-label {
-            font-weight: 700;
-            color: #2a5298;
+            font-weight: 600;
+            color: #3c4043;
         }
 
         .detail-value {
-            color: #2c3e66;
-            word-break: break-all;
+            color: #1a1c1e;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .modal-actions {
+            padding: 20px 24px 24px;
+            display: flex;
+            gap: 12px;
         }
 
         .download-btn {
-            background: #28a745;
+            flex: 2;
+            background: #0f9d58;
             color: white;
             border: none;
-            padding: 14px;
-            font-size: 1.1rem;
+            padding: 12px;
+            border-radius: 28px;
             font-weight: bold;
-            border-radius: 50px;
+            font-size: 1rem;
             cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            transition: 0.2s;
         }
 
         .download-btn:hover {
-            background: #218838;
-            transform: scale(1.02);
+            background: #0b7e46;
         }
 
-        .close-modal {
-            background: #dc3545;
-            color: white;
+        .close-modal-btn {
+            flex: 1;
+            background: #e8eaed;
             border: none;
-            padding: 10px;
-            width: 100%;
-            font-size: 1rem;
-            border-radius: 50px;
+            border-radius: 28px;
             cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
+            font-weight: 500;
+            transition: 0.2s;
         }
 
-        .close-modal:hover {
-            background: #c82333;
+        .close-modal-btn:hover {
+            background: #dadce0;
         }
 
-        /* حالة التحميل والخطأ */
-        .loading {
+        /* حالة عدم وجود نتائج */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+            border-radius: 24px;
+            color: #5f6368;
+        }
+
+        .loading-state {
             text-align: center;
             padding: 60px;
             font-size: 1.2rem;
-            color: #2a5298;
+            color: #0f9d58;
         }
 
-        .error-message {
-            text-align: center;
-            padding: 40px;
-            background: #f8d7da;
-            color: #721c24;
-            border-radius: 20px;
-            margin: 20px;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 40px;
-            color: #6c757d;
-            font-size: 1.2rem;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
+        .error-state {
+            background: #fce8e6;
+            color: #c5221f;
             padding: 20px;
-            color: #6c757d;
-            font-size: 0.8rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        /* استجابة للشاشات الصغيرة */
+        @media (max-width: 900px) {
+            .apps-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <h1>📱 متجر التطبيقات</h1>
-        <p>اكتشف أفضل التطبيقات - حمل ما يناسبك</p>
-    </div>
-
-    <div class="search-section">
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="🔍 ابحث عن تطبيق..." aria-label="بحث">
-            <button id="searchBtn">بحث</button>
+<div class="top-bar">
+    <div class="top-bar-content">
+        <div class="logo">📱 متجري</div>
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="ابحث عن تطبيق...">
         </div>
     </div>
-
-    <div id="appsContainer" class="apps-grid">
-        <div class="loading">⏳ جاري تحميل التطبيقات...</div>
-    </div>
-    <footer>
-        متجر تطبيقات عربي | جميع الحقوق محفوظة © 2025
-    </footer>
 </div>
 
-<!-- مودال التفاصيل -->
-<div id="detailModal" class="modal">
-    <div class="modal-content">
+<div class="container">
+    <div id="appsGrid" class="apps-grid">
+        <div class="loading-state">⏳ جاري تحميل التطبيقات...</div>
+    </div>
+</div>
+
+<div id="modal" class="modal">
+    <div class="modal-container">
         <div class="modal-header">
-            <h2 id="modalAppName">اسم التطبيق</h2>
-            <small>معلومات التطبيق</small>
+            <img id="modalIcon" src="" alt="app icon">
+            <div class="modal-header-text">
+                <h2 id="modalTitle">-</h2>
+                <p id="modalDeveloperName">-</p>
+            </div>
         </div>
         <div class="modal-body">
-            <div class="modal-img">
-                <img id="modalAppImage" src="" alt="صورة التطبيق">
-            </div>
-            <div class="detail-row">
-                <span class="detail-label">📦 اسم الحزمة:</span>
+            <div class="detail-item">
+                <span class="detail-label">📦 الحزمة:</span>
                 <span class="detail-value" id="modalPackage">-</span>
             </div>
-            <div class="detail-row">
-                <span class="detail-label">📌 الإصدار:</span>
+            <div class="detail-item">
+                <span class="detail-label">🔢 الإصدار:</span>
                 <span class="detail-value" id="modalVersion">-</span>
             </div>
-            <div class="detail-row">
-                <span class="detail-label">👤 المطور:</span>
-                <span class="detail-value" id="modalDeveloper">-</span>
+            <div class="detail-item">
+                <span class="detail-label">📄 ملف APK:</span>
+                <span class="detail-value" id="modalApk">-</span>
             </div>
-            <div class="detail-row">
-                <span class="detail-label">📁 ملف APK:</span>
-                <span class="detail-value" id="modalApkFile">-</span>
-            </div>
-            <button id="downloadModalBtn" class="download-btn">📥 تحميل التطبيق</button>
-            <button class="close-modal" id="closeModalBtn">إغلاق</button>
+        </div>
+        <div class="modal-actions">
+            <button class="download-btn" id="downloadBtn">📥 تنزيل</button>
+            <button class="close-modal-btn" id="closeModalBtn">إغلاق</button>
         </div>
     </div>
 </div>
 
 <script>
-    // قائمة التطبيقات الأساسية (يتم تخزين أسمائها بعد قراءة A.txt)
-    let appNamesList = [];       // يحتوي على أسماء ملفات التطبيقات مثل ['Facebook.txt', 'WhatsApp.txt']
-    let appsData = new Map();    // خريطة لتخزين بيانات كل تطبيق (المفتاح: اسم التطبيق النظيف، القيمة: كائن البيانات)
-
-    // عناصر DOM
-    const appsContainer = document.getElementById('appsContainer');
+    // --- بنية البيانات الأساسية ---
+    let allApps = [];           // مصفوفة تحتوي على كائنات التطبيقات
+    let filteredApps = [];
+    const appsGrid = document.getElementById('appsGrid');
     const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.getElementById('searchBtn');
-    const modal = document.getElementById('detailModal');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const downloadModalBtn = document.getElementById('downloadModalBtn');
+    const modal = document.getElementById('modal');
+    let currentApkFile = '';
 
-    // متغيرات لتخزين التطبيق الحالي في المودال
-    let currentAppData = null;
-    let currentAppCleanName = '';
-
-    // دالة لقراءة ملف A.txt (قائمة أسماء ملفات التطبيقات)
-    async function fetchAppsList() {
+    // --- 1. قراءة A.txt (قائمة ملفات التطبيقات) ---
+    async function loadAppsList() {
         try {
             const response = await fetch('A.txt');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status} - تأكد من وجود ملف A.txt`);
-            }
+            if (!response.ok) throw new Error('ملف A.txt غير موجود');
             const text = await response.text();
-            // تقسيم النص إلى سطور، وتصفية الأسطر الفارغة وإزالة المسافات
-            const lines = text.split(/\r?\n/);
-            appNamesList = lines.filter(line => line.trim().length > 0).map(line => line.trim());
-            
-            if (appNamesList.length === 0) {
-                appsContainer.innerHTML = '<div class="error-message">⚠️ ملف A.txt لا يحتوي على أي تطبيقات.</div>';
-                return false;
-            }
-            return true;
-        } catch (error) {
-            console.error('خطأ في قراءة A.txt:', error);
-            appsContainer.innerHTML = `<div class="error-message">❌ فشل تحميل قائمة التطبيقات: ${error.message}<br>تأكد من وجود ملف A.txt في نفس المسار.</div>`;
-            return false;
+            const fileNames = text.split(/\r?\n/).filter(line => line.trim().length > 0);
+            if (fileNames.length === 0) throw new Error('A.txt فارغ');
+            return fileNames;
+        } catch (err) {
+            console.error(err);
+            showError('❌ فشل تحميل قائمة التطبيقات: ' + err.message);
+            return [];
         }
     }
 
-    // دالة لقراءة ملف تطبيق فردي (مثل Facebook.txt) واستخراج البيانات
-    async function fetchAppDetails(appFileName) {
+    // --- 2. قراءة ملف تفاصيل تطبيق واحد (مثلاً فيسبوك.txt) ---
+    async function loadSingleApp(appFileName) {
         try {
-            const response = await fetch(appFileName);
-            if (!response.ok) {
-                throw new Error(`لا يمكن قراءة ملف ${appFileName}`);
-            }
-            const content = await response.text();
-            //解析格式:
-            // اسم التطبيق Apk  مثلا Lite.apk 
-            // اسم الحزمة مثلا com.lita...
-            // الاصدار مثلا 1.1.1
-            // اسم المطور مثلا  Omar 
-            // صورة التطبيق مثلا 454842.png
-            const lines = content.split(/\r?\n/);
-            let apkFile = '', packageName = '', version = '', developer = '', imageFile = '';
+            const res = await fetch(appFileName);
+            if (!res.ok) throw new Error(`لا يمكن قراءة ${appFileName}`);
+            const content = await res.text();
+            const lines = content.split(/\r?\n/).filter(l => l.trim().length > 0);
             
-            for (let line of lines) {
-                line = line.trim();
-                if (line === '') continue;
-                
-                // نبحث عن الكلمات المفتاحية المرنة: يمكن أن تحتوي على (Apk, apk, الحزمة, Package, الاصدار, Version, المطور, Developer, صورة, Image)
-                // لكن نعتمد على التنسيق الموصوف: السطر الأول هو اسم ملف APK.
-                // أفضل طريقة: تخزين الأسطر المتتالية حسب الترتيب المذكور في السؤال.
-                // الترتيب: السطر1: اسم التطبيق Apk, السطر2: اسم الحزمة, السطر3: الاصدار, السطر4: اسم المطور, السطر5: صورة التطبيق
-                // ولكن قد تكون هناك أسطر إضافية، نستخدم مؤشرات.
+            // التنسيق المطلوب بالترتيب:
+            // السطر 0: اسم ملف APK (مثل Lite.apk)
+            // السطر 1: اسم الحزمة (com.example)
+            // السطر 2: الإصدار (1.1.1)
+            // السطر 3: اسم المطور (Omar)
+            // السطر 4: صورة التطبيق (icon.png)
+            if (lines.length < 5) {
+                console.warn(`الملف ${appFileName} لا يحتوي على 5 أسطر كاملة`);
+                return null;
             }
             
-            // طريقة أكثر أماناً: نقرأ الأسطر غير الفارغة ونحدد حسب السياق BUT دعنا نعتمد على التعريف الثابت حسب الوصف:
-            // المستخدم قال التنسيق: 
-            // اسم تطبيق.txt يحتوي على:
-            // اسم التطبيق Apk  مثلا Lite.apk 
-            // اسم الحزمة مثلا com.lita...
-            // الاصدار مثلا 1.1.1
-            // اسم المطور مثلا  Omar 
-            // صورة التطبيق مثلا 454842.png
-            const nonEmptyLines = lines.filter(l => l.trim().length > 0);
-            if (nonEmptyLines.length >= 5) {
-                apkFile = nonEmptyLines[0].trim();
-                packageName = nonEmptyLines[1].trim();
-                version = nonEmptyLines[2].trim();
-                developer = nonEmptyLines[3].trim();
-                imageFile = nonEmptyLines[4].trim();
-            } else {
-                // إذا كان الملف ناقصاً نحاول تعيين قيم افتراضية
-                apkFile = nonEmptyLines[0] || 'unknown.apk';
-                packageName = nonEmptyLines[1] || 'غير معروف';
-                version = nonEmptyLines[2] || '1.0';
-                developer = nonEmptyLines[3] || 'مطور عام';
-                imageFile = nonEmptyLines[4] || 'default.png';
-            }
+            const apkFile = lines[0].trim();
+            const packageName = lines[1].trim();
+            const version = lines[2].trim();
+            const developer = lines[3].trim();
+            const imageFile = lines[4].trim();
             
-            // استخراج اسم التطبيق النظيف من اسم الملف (إزالة .txt)
-            const cleanAppName = appFileName.replace(/\.txt$/i, '');
+            // اسم التطبيق النظيف = اسم الملف بدون .txt
+            let cleanName = appFileName.replace(/\.txt$/i, '');
             
             return {
-                cleanName: cleanAppName,
-                apkFile: apkFile,
+                id: cleanName,
+                name: cleanName,
+                apk: apkFile,
                 packageName: packageName,
                 version: version,
                 developer: developer,
-                imageFile: imageFile,
-                originalFileName: appFileName
+                image: imageFile,
+                // نجعل تقييماً وهمياً جميلاً لمظهر جوجل بلاي
+                rating: (Math.random() * 2 + 3).toFixed(1)
             };
-        } catch (error) {
-            console.error(`خطأ في تحميل تفاصيل ${appFileName}:`, error);
+        } catch (err) {
+            console.error(`خطأ في تحميل ${appFileName}:`, err);
             return null;
         }
     }
 
-    // دالة تحميل جميع التطبيقات بالتوازي
-    async function loadAllApps() {
-        const listLoaded = await fetchAppsList();
-        if (!listLoaded) return;
+    // --- 3. تحميل كل التطبيقات ---
+    async function initializeStore() {
+        appsGrid.innerHTML = '<div class="loading-state">📱 جاري تحميل المتجر...</div>';
+        const appFileNames = await loadAppsList();
+        if (appFileNames.length === 0) return;
         
-        appsContainer.innerHTML = '<div class="loading">📲 جاري تحميل بيانات التطبيقات...</div>';
+        // تحميل تفاصيل كل تطبيق بالتوازي
+        const promises = appFileNames.map(file => loadSingleApp(file));
+        const results = await Promise.all(promises);
         
-        // تحميل تفاصيل كل تطبيق من ملفه
-        const fetchPromises = appNamesList.map(async (appEntry) => {
-            // appEntry هو اسم الملف مثلاً "Facebook.txt"
-            const details = await fetchAppDetails(appEntry);
-            if (details) {
-                appsData.set(details.cleanName, details);
-                return details;
-            }
-            return null;
-        });
+        allApps = results.filter(app => app !== null);
         
-        const results = await Promise.all(fetchPromises);
-        const successfulApps = results.filter(r => r !== null);
-        
-        if (successfulApps.length === 0) {
-            appsContainer.innerHTML = '<div class="error-message">⚠️ لم يتم العثور على بيانات صالحة لأي تطبيق. تأكد من صيغة الملفات.</div>';
+        if (allApps.length === 0) {
+            showError('⚠️ لم يتم العثور على بيانات صالحة لأي تطبيق. تأكد من صيغة الملفات.');
             return;
         }
         
-        // عرض التطبيقات
-        displayApps(successfulApps);
+        filteredApps = [...allApps];
+        renderAppsGrid(filteredApps);
     }
 
-    // عرض قائمة التطبيقات (مع دعم البحث)
-    function displayApps(appsArray) {
-        if (!appsArray || appsArray.length === 0) {
-            appsContainer.innerHTML = '<div class="no-results">😓 لا توجد تطبيقات مطابقة للبحث.</div>';
+    // --- عرض الشبكة (3 في السطر) ---
+    function renderAppsGrid(apps) {
+        if (!apps.length) {
+            appsGrid.innerHTML = '<div class="empty-state">😕 لا توجد تطبيقات مطابقة للبحث</div>';
             return;
         }
         
-        appsContainer.innerHTML = '';
-        appsArray.forEach(app => {
+        appsGrid.innerHTML = '';
+        for (let app of apps) {
             const card = document.createElement('div');
             card.className = 'app-card';
-            card.setAttribute('data-appname', app.cleanName);
+            card.setAttribute('data-app', app.id);
             
-            // تحديد مسار الصورة: نفترض أن الصور موجودة في نفس المجلد، يمكن إضافة مسار ثابت
-            const imgSrc = app.imageFile || 'default-app.png';
+            // معالجة الصورة: لو الصورة مش موجودة تظهر placeholder
+            const imgSrc = app.image || 'default.png';
             
             card.innerHTML = `
                 <div class="app-card-img">
-                    <img src="${imgSrc}" alt="${app.cleanName}" onerror="this.src='https://placehold.co/400x400?text=📱+No+Image'">
+                    <img src="${imgSrc}" alt="${escapeHtml(app.name)}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2991/2991148.png'">
                 </div>
-                <h3>${escapeHtml(app.cleanName)}</h3>
-                <p>${escapeHtml(app.developer) || 'مطور'}</p>
+                <div class="app-info">
+                    <h3>${escapeHtml(app.name)}</h3>
+                    <div class="developer">${escapeHtml(app.developer)}</div>
+                    <div class="rating">⭐ ${app.rating} · تطبيق</div>
+                </div>
             `;
             
-            card.addEventListener('click', (e) => {
-                e.stopPropagation();
-                openModal(app.cleanName);
-            });
-            
-            appsContainer.appendChild(card);
-        });
+            card.addEventListener('click', () => showAppDetails(app));
+            appsGrid.appendChild(card);
+        }
     }
-    
-    // فتح نافذة التفاصيل
-    function openModal(cleanAppName) {
-        const app = appsData.get(cleanAppName);
-        if (!app) return;
-        
-        currentAppData = app;
-        currentAppCleanName = cleanAppName;
-        
-        document.getElementById('modalAppName').innerText = app.cleanName;
+
+    // --- عرض التفاصيل في مودال احترافي ---
+    function showAppDetails(app) {
+        document.getElementById('modalTitle').innerText = app.name;
+        document.getElementById('modalDeveloperName').innerText = app.developer;
         document.getElementById('modalPackage').innerText = app.packageName;
         document.getElementById('modalVersion').innerText = app.version;
-        document.getElementById('modalDeveloper').innerText = app.developer;
-        document.getElementById('modalApkFile').innerText = app.apkFile;
+        document.getElementById('modalApk').innerText = app.apk;
+        currentApkFile = app.apk;
         
-        const modalImg = document.getElementById('modalAppImage');
-        modalImg.src = app.imageFile || 'default.png';
-        modalImg.onerror = () => { modalImg.src = 'https://placehold.co/200x200?text=No+Image'; };
+        const modalIcon = document.getElementById('modalIcon');
+        modalIcon.src = app.image || 'default.png';
+        modalIcon.onerror = () => { modalIcon.src = 'https://cdn-icons-png.flaticon.com/512/2991/2991148.png'; };
         
         modal.classList.add('active');
     }
-    
-    // دالة تنزيل ملف APK
-    function downloadApk(apkFileName) {
-        if (!apkFileName) {
-            alert('لا يوجد رابط تحميل متاح لهذا التطبيق.');
+
+    // --- تنزيل ملف APK ---
+    function downloadApk(fileName) {
+        if (!fileName) {
+            alert('لا يوجد ملف للتحميل');
             return;
         }
-        // إنشاء رابط وهمي للتحميل (نفترض أن ملفات apk موجودة في نفس المسار)
+        // إنشاء رابط تحميل وهمي
         const link = document.createElement('a');
-        link.href = apkFileName;
-        link.download = apkFileName; // اقتراح اسم الملف
-        document.body.appendChild(link);
+        link.href = fileName;
+        link.download = fileName;
         link.click();
-        document.body.removeChild(link);
     }
-    
-    // البحث في التطبيقات
-    function searchApps(query) {
-        if (!query.trim()) {
-            // إذا كان البحث فارغاً نعرض كل التطبيقات
-            const allApps = Array.from(appsData.values());
-            displayApps(allApps);
-            return;
+
+    // --- فلترة البحث (تحديث فوري) ---
+    function filterAppsBySearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (!query) {
+            filteredApps = [...allApps];
+        } else {
+            filteredApps = allApps.filter(app => 
+                app.name.toLowerCase().includes(query) || 
+                app.developer.toLowerCase().includes(query)
+            );
         }
-        
-        const lowerQuery = query.toLowerCase().trim();
-        const filtered = Array.from(appsData.values()).filter(app => 
-            app.cleanName.toLowerCase().includes(lowerQuery) || 
-            app.developer.toLowerCase().includes(lowerQuery) ||
-            app.packageName.toLowerCase().includes(lowerQuery)
-        );
-        displayApps(filtered);
+        renderAppsGrid(filteredApps);
     }
-    
-    // مساعد لتفادي XSS
+
+    // --- أدوات مساعدة ---
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/[&<>]/g, function(m) {
@@ -595,44 +524,35 @@
             if (m === '<') return '&lt;';
             if (m === '>') return '&gt;';
             return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
         });
     }
-    
-    // أحداث البحث
-    searchBtn.addEventListener('click', () => {
-        searchApps(searchInput.value);
-    });
-    
-    searchInput.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-            searchApps(searchInput.value);
-        }
-    });
-    
-    // إغلاق المودال
-    function closeModal() {
-        modal.classList.remove('active');
-        currentAppData = null;
+
+    function showError(msg) {
+        appsGrid.innerHTML = `<div class="error-state">⚠️ ${escapeHtml(msg)}<br>تأكد من وجود الملفات: A.txt + ملفات التطبيقات</div>`;
     }
+
+    // --- أحداث البحث والتحكم بالمودال ---
+    searchInput.addEventListener('input', filterAppsBySearch);
     
-    closeModalBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
+    document.getElementById('closeModalBtn').addEventListener('click', () => {
+        modal.classList.remove('active');
     });
     
-    // زر التحميل داخل المودال
-    downloadModalBtn.addEventListener('click', () => {
-        if (currentAppData && currentAppData.apkFile) {
-            downloadApk(currentAppData.apkFile);
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+        if (currentApkFile) {
+            downloadApk(currentApkFile);
         } else {
-            alert('لا يتوفر رابط التحميل لهذا التطبيق.');
+            alert('لا يمكن التحميل الآن');
         }
     });
     
-    // بدء تحميل الصفحة
-    loadAllApps();
+    // إغلاق المودال عند النقر خارج المحتوى
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('active');
+    });
+    
+    // بدء التشغيل
+    initializeStore();
 </script>
 </body>
 </html>
